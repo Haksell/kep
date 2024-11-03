@@ -1,0 +1,1 @@
+(lambda x,y:print(-~(x*x)/(x*x+x*y+y*y)))(*map(int,open(0)))

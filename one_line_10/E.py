@@ -1,0 +1,1 @@
+print((lambda n:[i for i in range(2,99)if n%i][0])(int(input())))
