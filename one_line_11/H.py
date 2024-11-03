@@ -1,0 +1,1 @@
+(lambda s,d:([d.extend(w+c for w in d[:])for c in s],print(*d,sep="\n")))(input(),[""])

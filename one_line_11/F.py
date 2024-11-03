@@ -1,0 +1,1 @@
+print("Cat Giraffe Chicken Ostrich Dolphin Plesiosaurs Penguin Duck".split()[sum(i*(input()>"O")for i in[4,2,1])])

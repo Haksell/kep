@@ -1,0 +1,1 @@
+print("Yes"if __import__("re").fullmatch(r"\d\d/\d\d/\d{4}",input())else"No")

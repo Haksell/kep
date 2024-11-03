@@ -1,0 +1,1 @@
+print((lambda x:[[["Extremely "*(x>=35)+"Obese","Overweight"][x<30],"Normal"][x<25],"Underweight"][x<18.5])(int(input())/float(input())**2))

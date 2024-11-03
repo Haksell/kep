@@ -1,0 +1,1 @@
+print(int(input())/float(input())**2)

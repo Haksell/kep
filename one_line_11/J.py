@@ -1,0 +1,1 @@
+(lambda n,s={0},r=range:([s.add(max(s)+j)for n in r(13)for j in[*r(2,n+3),*r(n+1,0,-1)]],print("".join(f"{i+1}{' \n'[i in s]}"for i in r(n)))))(int(input()))

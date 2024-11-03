@@ -1,0 +1,1 @@
+print([i for i in map(str,range(int(input())+1,8**5))if{*i}<={*"02468"}and len(i)==len({*i})][0])
