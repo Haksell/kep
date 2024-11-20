@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "[plaintext]": {
+        "editor.formatOnSave": false
+    },
+    "files.associations": {
+        "0084.py": "plaintext",
+    }
+}
