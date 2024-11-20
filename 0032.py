@@ -1,5 +1,5 @@
-# ruff: noqa: E731, E741
-from collections import Counter
+# ruff: noqa: E731
+import string
 import sys
 
 read = sys.stdin.readline
@@ -11,11 +11,7 @@ lmir = lambda: list(map(int, read().split()))
 
 
 def main():
-    _ = ir()
-    a = lmir()
-    c = Counter(a)
-    m = max(c.values())
-    print(min(k for k, v in c.items() if v == m))
+    print(string.ascii_lowercase)
 
 
 if __name__ == "__main__":

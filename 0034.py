@@ -1,4 +1,4 @@
-# ruff: noqa: E731, E741
+# ruff: noqa: E731
 import sys
 
 read = sys.stdin.readline
@@ -10,12 +10,7 @@ lmir = lambda: list(map(int, read().split()))
 
 
 def main():
-    d = ir()
-    m = ir()
-    y = ir()
-    t1 = (y, m, d)
-    t2 = (2021, 2, 14)
-    print("<" if t1 < t2 else ">" if t1 > t2 else "=")
+    print(""""Hello, Python'""")
 
 
 if __name__ == "__main__":
