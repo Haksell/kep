@@ -4,7 +4,7 @@ G = 9.81
 
 
 def acceleration():
-    DT = 3e-5
+    DT = 3e-6
 
     x = 1.0
     t = v = 0.0
@@ -38,27 +38,58 @@ def conservation():
     return t
 
 
-def nomath(y):
-    STEPS = 1 << 15
+def nomathy(*, x, steps):
+    y = x**2
     e = y * G
-    dy = y / STEPS
+    dy = y / steps
     t = 0.0
-    for _ in range(STEPS):
-        my = y - (dy / 2)
+    for _ in range(steps):
+        my = y - dy / 2
         dydx = 2 * sqrt(my)
         v = sqrt(2 * (e - G * my))
         vy = v * (dydx / hypot(1, dydx))
         dt = dy / vy
         y -= dy
         t += dt
+    return t
 
+
+def nomathx(*, x, steps):
+    e = x**2 * G
+    dx = x / steps
+    t = 0.0
+    for _ in range(steps):
+        mx = x - dx / 2
+        v = sqrt(2 * (e - G * mx**2))
+        vx = v / hypot(1, 2 * mx)
+        dt = dx / vx
+        x -= dx
+        t += dt
+    return t
+
+
+def nomathv(*, x, steps):
+    e = x**2 * G
+    dv = sqrt(2 * e) / steps
+    v = t = 0.0
+    for _ in range(steps):
+        y0 = (e - 1 / 2 * v**2) / G
+        y1 = max(0, (e - 1 / 2 * (v + dv) ** 2) / G)
+        x0 = sqrt(y0)
+        x1 = sqrt(y1)
+        mv = v + dv / 2
+        dt = hypot(x0 - x1, y0 - y1) / mv
+        v += dv
+        t += dt
     return t
 
 
 def main():
     print(f"{acceleration():.6f}")
     print(f"{conservation():.6f}")
-    print(f"{nomath(1.0):.6f}")
+    print(f"{nomathy(x=1.0, steps=100):.6f}")
+    print(f"{nomathx(x=1.0, steps=100):.6f}")
+    print(f"{nomathv(x=1.0, steps=100):.6f}")
 
 
 if __name__ == "__main__":
