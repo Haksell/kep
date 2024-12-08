@@ -39,7 +39,7 @@ def conservation():
 
 
 def nomath(y):
-    STEPS = 1 << 17
+    STEPS = 1 << 15
     e = y * G
     dy = y / STEPS
     t = 0.0
