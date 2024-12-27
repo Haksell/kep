@@ -33,13 +33,13 @@ def stringify(n):
     return "K" + "".join(reversed(parts))
 
 
-def encrypt(nums, depth, res):
+def encrypt(ints, depth, res):
     if depth == OBSERVATION_BITS:
         return
     mask = 1 << (OBSERVATION_BITS - depth - 1)
-    bits = len(nums).bit_length()
-    zero = [n for n in nums if not (n & mask)]
-    one = [n for n in nums if n & mask]
+    zero = [n for n in ints if not (n & mask)]
+    one = [n for n in ints if n & mask]
+    bits = len(ints).bit_length()
     res.append(f"{len(zero):0{bits}b}")
     if zero:
         encrypt(zero, depth + 1, res)
@@ -47,18 +47,18 @@ def encrypt(nums, depth, res):
         encrypt(one, depth + 1, res)
 
 
-def decrypt(s, i, n, depth, value, res):
+def decrypt(s, i, quantity, depth, value, ints):
     if depth == OBSERVATION_BITS:
-        res.extend([value] * n)
+        ints.extend([value] * quantity)
         return i
-    bits = n.bit_length()
+    bits = quantity.bit_length()
     zero = int(s[i : i + bits], 2)
-    one = n - zero
+    one = quantity - zero
     i += bits
     if zero:
-        i = decrypt(s, i, zero, depth + 1, value << 1, res)
+        i = decrypt(s, i, zero, depth + 1, value << 1, ints)
     if one:
-        i = decrypt(s, i, one, depth + 1, value << 1 | 1, res)
+        i = decrypt(s, i, one, depth + 1, value << 1 | 1, ints)
     return i
 
 
